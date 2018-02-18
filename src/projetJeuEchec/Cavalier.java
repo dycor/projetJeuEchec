@@ -17,7 +17,7 @@ public class Cavalier extends Piece{
 	@Override
 	public boolean estValide(Position debut, Position fin) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

@@ -17,8 +17,7 @@ public class Reine extends Piece{
 	@Override
 	public boolean estValide(Position debut, Position fin) {
 		// TODO Auto-generated method stub
-//		(  ( Math.abs(debut.getY()- fin.getY()) - Math.abs(debut.getY()- fin.getY()) ) == 0  );
-		return (((fin.getX()==debut.getX()) && (fin.getY()!=debut.getY()))  || ((fin.getX()!=debut.getX()) && (fin.getY()==debut.getY())) ||((debut.getX()-fin.getX()) == (debut.getY()-fin.getY()))||(  ( Math.abs(debut.getY()- fin.getY()) - Math.abs(debut.getY()- fin.getY()) ) == 0  ));
+		return (((fin.getX()==debut.getX()) && (fin.getY()!=debut.getY()))  || ((fin.getX()!=debut.getX()) && (fin.getY()==debut.getY())) ||((debut.getX()-fin.getX()) == (debut.getY()-fin.getY()))||(Math.abs((debut.getX()- fin.getX())) - Math.abs((debut.getY()- fin.getY()))) == 0);
 
 	}
 

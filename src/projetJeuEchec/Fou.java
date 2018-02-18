@@ -17,10 +17,8 @@ public class Fou extends Piece{
 	@Override
 	public boolean estValide(Position debut, Position fin) {
 		// TODO Auto-generated method stub
-		System.out.println("X"+(debut.getX()- fin.getX()));
-		System.out.println(( Math.abs((debut.getY()- fin.getY())) - Math.abs((debut.getY()- fin.getY())) ));
 
-		return (  ( Math.abs((debut.getY()- fin.getY())) - Math.abs((debut.getY()- fin.getY())) ) == 0  );
+		return ((Math.abs((debut.getX()- fin.getX())) - Math.abs((debut.getY()- fin.getY()))) == 0);
 	}
 
 }

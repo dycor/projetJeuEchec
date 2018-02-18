@@ -22,6 +22,7 @@ public class Plateau extends JFrame implements ActionListener{
 	private Position depart = null,fin = null;
 	private Piece pieceMvt ;
 	private JPanel cases =  new JPanel();
+	private Joueur j1,j2;
 	
 	// On initialise l'échequier avec des cases vides
 	private Plateau() {
@@ -101,6 +102,9 @@ public class Plateau extends JFrame implements ActionListener{
 	    
 		this.setVisible(true);
 		
+		j1 = new Joueur("Joueur 1");
+		j2 = new Joueur("Joueur 2");
+		
 	}
 	
 
@@ -148,7 +152,7 @@ public class Plateau extends JFrame implements ActionListener{
 		 this.echiquier[7][3].setPiece(new Roi("rouge"));
 		 this.echiquier[7][4].setPiece(new Reine("rouge"));
 
-		 
+		 System.out.println("Tour du joueur 1");
 	 }
 
 	@Override
@@ -160,24 +164,32 @@ public class Plateau extends JFrame implements ActionListener{
    			// Caster l'objet source de l'événement en JButton
 			
    			Case btnCase = (Case) e.getSource();
-   			
    			if(this.depart == null) {
 				this.depart = btnCase.getPos();
-				String pion = "Pion";
 				this.pieceMvt = btnCase.getPiece() ;
+				
+				if(this.pieceMvt == null)
+					this.depart = null;
+				System.out.println("case de départ : "+ btnCase.getPos().getX()+ " "+ btnCase.getPos().getY());
 
 			} else if((this.depart != null) & (this.fin ==  null)) {
 				this.fin = btnCase.getPos();
-				System.out.println(this.pieceMvt.estValide(this.depart, this.fin));
-				if(this.pieceMvt.estValide(this.depart, this.fin))
+				System.out.println("Case d'arrivée : "+btnCase.getPos().getX()+ " "+ btnCase.getPos().getY());
+				
+				if(this.pieceMvt.estValide(this.depart, this.fin)) {
+					System.out.println("Deplacement valide\n");
 					this.deplacement();	
+				} else {
+					System.out.println("Deplacement invalide\n");
+					
+				}
+					
 				this.depart = null;
 	   			this.fin = null;
+	   			
+
 			}
    			
-   			System.out.println(btnCase.getPos().getX()+ " "+ btnCase.getPos().getY());
-   			System.out.println();
-
 		}
 		   			
 		
@@ -194,8 +206,6 @@ public class Plateau extends JFrame implements ActionListener{
 	    	
 	    }
 		this.getContentPane().add(cases,BorderLayout.CENTER);
-		System.out.println("Pos depart "+this.depart);
-		System.out.println("Pos fin "+this.fin);
 		
 	}
 	
