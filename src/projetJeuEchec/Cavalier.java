@@ -17,7 +17,14 @@ public class Cavalier extends Piece{
 	@Override
 	public boolean estValide(Position debut, Position fin) {
 		// TODO Auto-generated method stub
-		return true;
+		
+		// X - 2 & ( Y-1 | Y+1) 
+		int x = debut.getX() -fin.getX();
+		int y = (debut.getY() -fin.getY());
+		
+		// ((x == -2) & (y == -1))
+		// ((x == -2) & (y == 1))
+		return ( ((x == 2) & (y == -1)) || ((x == 2) & (y == 1))||((x == -2) & (y == -1))||((x == -2) & (y == 1)));
 	}
 
 }

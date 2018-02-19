@@ -199,14 +199,34 @@ public class Plateau extends JFrame implements ActionListener{
 		this.echiquier[this.depart.getX()][this.depart.getY()].setPiece(null);
 		this.echiquier[this.fin.getX()][this.fin.getY()].setPiece(this.pieceMvt);
 
+		int nbPieceRouge = 0,nbPieceBleu=0;
+		// On mets a jour l'échiquier
 		for(int i = 0; i < NB_CASES_AXE; i++) {
 	    	 for(int j = 0; j<NB_CASES_AXE; j++) {
+	    		 if(this.echiquier[i][j].getPiece()!= null) {
+	    			 String couleur = this.echiquier[i][j].getPiece().getCouleur();
+	    			 if(couleur == "bleu") {
+	    				 nbPieceBleu++;
+	    			 } else if(couleur == "rouge") {
+	    				 nbPieceRouge++;
+	    			 }
+	    		 }
 	    		 cases.add( this.echiquier[i][j]);
 	    	 }
 	    	
 	    }
+		this.j1.setNbPiece(nbPieceBleu);
+		this.j2.setNbPiece(nbPieceRouge);
 		this.getContentPane().add(cases,BorderLayout.CENTER);
+		this.fin();
 		
+	}
+	
+	public void fin() {
+		if (this.j1.getNbPiece() == 0)
+			System.out.println("Le "+ j1.getNom()+" à perdu");
+		if (this.j2.getNbPiece() == 0)
+			System.out.println("Le "+ j1.getNom()+" à perdu");
 	}
 	
 }

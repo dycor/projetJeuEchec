@@ -21,7 +21,8 @@ public class Pion extends Piece {
 				premierCoup =false;
 				return true;
 			}
-				
+			if((fin.getX()-debut.getX()) == 1)
+				premierCoup =false;
 			return ((fin.getX()-debut.getX()) == 1);
 		}
 		
@@ -30,7 +31,8 @@ public class Pion extends Piece {
 				premierCoup =false;
 				return true;
 			}
-				
+			if((debut.getX()-fin.getX()) == 1)
+				premierCoup =false;
 			return ((debut.getX()-fin.getX()) == 1);
 		}
 		
