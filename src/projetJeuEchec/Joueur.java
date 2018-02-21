@@ -1,5 +1,5 @@
 package projetJeuEchec;
-
+//CODE DE DYLAN ET MEHDI
 public class Joueur {
 	private String nom;
 	private boolean tour;

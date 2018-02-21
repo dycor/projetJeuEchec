@@ -1,13 +1,10 @@
 package projetJeuEchec;
-
+//CODE DE DYLAN ET MEHDI
 import java.awt.Image;
 
 public class Pion extends Piece {
 	private boolean premierCoup = true;
-	public Pion(String couleur,Image img) {
-		super(couleur,img);
-	}
-	 
+
 	 public Pion(String couleur) {
 			super(couleur,"Pion");
 			// TODO Auto-generated constructor stub
@@ -37,6 +34,23 @@ public class Pion extends Piece {
 		}
 		
 		// Rajouter le cas ou il y'a un pion à manger
+		return false;
+	}
+
+	@Override
+	public boolean cheminBloque(Case[][] echiquier, Position depart, Position fin) {
+		// TODO Auto-generated method stub
+		
+		
+		if(echiquier[fin.getX()][fin.getY()].getPiece()!=null)
+			if(echiquier[fin.getX()][fin.getY()].getPiece().getCouleur() == this.couleur)
+				return true;
+
+		if(premierCoup && this.couleur == "rouge")
+			return (echiquier[fin.getX()+1][fin.getY()].getPiece() ==null);
+		
+		if(premierCoup && this.couleur == "bleu")
+			return (echiquier[fin.getX()-1][fin.getY()].getPiece() !=null);
 		return false;
 	}
 }

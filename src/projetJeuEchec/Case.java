@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Image;
 
 import javax.swing.JButton;
-
+//CODE DE DYLAN ET MEHDI
 public class Case extends JButton{
 	private Position pos;
 	private Piece piece;

@@ -14,15 +14,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+//CODE DE DYLAN ET MEHDI
 
 // Choix d'un Singleton car ca permet d'avoir une instance unique d'une classe
 public class Plateau extends JFrame implements ActionListener{
 	final static int NB_CASES_AXE = 8;
-	private Case echiquier[][];
-	private Position depart = null,fin = null;
-	private Piece pieceMvt ;
-	private JPanel cases =  new JPanel();
-	private Joueur j1,j2;
+	private Case echiquier[][]; // Echiquier va stocker les pieces
+	private Position depart = null,fin = null; // Position pour les déplacements
+	private Piece pieceMvt ; // La pièce qui va se déplacer
+	private JPanel cases =  new JPanel(); // Le panel qui va stocker les cases
+	private Joueur j1,j2; // Les deux joueur
+	private String lettres[] = {"A", "B", "C" , "D","E","F","G","H"};
 	
 	// On initialise l'échequier avec des cases vides
 	private Plateau() {
@@ -70,16 +72,11 @@ public class Plateau extends JFrame implements ActionListener{
 	    }
 	    
 	   
-	    
 	    // On ajoute la legende des colonnes
-	    legendeCol.add(new JLabel("A"));
-	    legendeCol.add(new JLabel("B"));
-	    legendeCol.add(new JLabel("C"));
-	    legendeCol.add(new JLabel("D"));
-	    legendeCol.add(new JLabel("E"));
-	    legendeCol.add(new JLabel("F"));
-	    legendeCol.add(new JLabel("G"));
-	    legendeCol.add(new JLabel("H"));
+
+	    for(int i = 0; i < NB_CASES_AXE; i++) {
+	    	 legendeCol.add(new JLabel(lettres[i]));
+	    }
 	    
 	    
 	    // On ajoute la légende des lignes
@@ -87,7 +84,6 @@ public class Plateau extends JFrame implements ActionListener{
 	    for(int i=1; i<=NB_CASES_AXE;i++) {
 	    	legendeLigne.add(new JLabel(Integer.toString( i)));
 	    }
-//	    this.add(cases);
 	    
 	    //On ajoute les cases et légende 
 	    //Au centre
@@ -170,13 +166,13 @@ public class Plateau extends JFrame implements ActionListener{
 				
 				if(this.pieceMvt == null)
 					this.depart = null;
-				System.out.println("case de départ : "+ btnCase.getPos().getX()+ " "+ btnCase.getPos().getY());
+				System.out.println("case de départ : "+ lettres[btnCase.getPos().getY()]+ (btnCase.getPos().getX()+1));
 
 			} else if((this.depart != null) & (this.fin ==  null)) {
 				this.fin = btnCase.getPos();
-				System.out.println("Case d'arrivée : "+btnCase.getPos().getX()+ " "+ btnCase.getPos().getY());
-				
-				if(this.pieceMvt.estValide(this.depart, this.fin)) {
+				System.out.println("Case d'arrivée : "+lettres[btnCase.getPos().getY()]+ (btnCase.getPos().getX()+1));
+
+				if(this.pieceMvt.estValide(this.depart, this.fin)&&!this.pieceMvt.cheminBloque(this.echiquier, this.depart, this.fin)) {
 					System.out.println("Deplacement valide\n");
 					this.deplacement();	
 				} else {

@@ -1,5 +1,5 @@
 package projetJeuEchec;
-
+//CODE DE DYLAN ET MEHDI
 public class Position {
 	private int x,y;
 	
